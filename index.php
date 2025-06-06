@@ -63,6 +63,7 @@
 <div class="container">
   <div class="menu">
     <a href="cadastrar_tcc.php">➕ Cadastrar Novo TCC</a>
+    <a href="agenda_tcc.php">➕ Agendar Novo TCC</a>
     <a href="ver_tcc.php">📋 Ver TCCS Marcados</a>
     <a href="cadastrar_aluno.php">👨‍🎓 Cadastrar Aluno</a>
     <a href="cadastrar_professor.php">👩‍🏫 Cadastrar Professor</a>

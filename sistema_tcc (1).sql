@@ -23,15 +23,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela `agenda_aluno`
---
 
-CREATE TABLE `agenda_aluno` (
-  `id` int(11) NOT NULL,
-  `agenda_id` int(11) DEFAULT NULL,
-  `aluno_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -187,3 +179,46 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE DATABASE IF NOT EXISTS sistema_tcc;
+USE sistema_tcc;
+
+-- Tabela de Alunos
+CREATE TABLE IF NOT EXISTS alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    idade INT NOT NULL,
+    curso VARCHAR(100) NOT NULL
+);
+
+-- Tabela de Professores
+CREATE TABLE IF NOT EXISTS professores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    area VARCHAR(100) NOT NULL
+);
+
+-- Tabela de TCCs
+CREATE TABLE IF NOT EXISTS tccs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    local VARCHAR(100) NOT NULL,
+    data_hora DATETIME NOT NULL,
+
+    prof_orientador_id INT NOT NULL,
+    prof_convidado1_id INT,
+    prof_convidado2_id INT,
+
+    aluno1_id INT NOT NULL,
+    aluno2_id INT,
+    aluno3_id INT,
+
+    nota_final DECIMAL(5,2),
+
+    FOREIGN KEY (prof_orientador_id) REFERENCES professores(id),
+    FOREIGN KEY (prof_convidado1_id) REFERENCES professores(id),
+    FOREIGN KEY (prof_convidado2_id) REFERENCES professores(id),
+
+    FOREIGN KEY (aluno1_id) REFERENCES alunos(id),
+    FOREIGN KEY (aluno2_id) REFERENCES alunos(id),
+    FOREIGN KEY (aluno3_id) REFERENCES alunos(id)
+);
