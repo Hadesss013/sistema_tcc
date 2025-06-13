@@ -1,4 +1,4 @@
-<<?php
+<?php
 require 'conexao.php'; // conexão PDO com o banco de dados
 
 // Busca os tipos de TCC
@@ -6,7 +6,7 @@ $tiposStmt = $pdo->query("SELECT id, nome FROM tipo_tcc");
 $tipos = $tiposStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Busca os professores
-$profStmt = $pdo->query("SELECT id, nome FROM professor");
+$profStmt = $pdo->query("SELECT id, nome FROM professores");
 $professores = $profStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 

@@ -69,7 +69,7 @@
     <a href="cadastrar_professor.php">👩‍🏫 Cadastrar Professor</a>
     <a href="ver_alunos.php">🔎 Ver Alunos</a>
     <a href="ver_professores.php">🔎 Ver Professores</a>
-    <a href="ver_tccs.php">🔎 Ver TCCS</a>
+    <a href="ver_tcc.php">🔎 Ver TCCS</a>
   </div>
 </div>
 

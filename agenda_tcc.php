@@ -1,4 +1,8 @@
 <!-- agendar_tcc.php -->
+<?php
+require 'conexao.php';
+$professores = $pdo->query('SELECT id, nome FROM professores')->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,8 +18,18 @@
     <form action="salvar_agendamento.php" method="POST">
         <input type="datetime-local" name="data_hora" required>
         <input type="text" name="local" placeholder="Local" required>
-        <input type="text" name="prof_orientador" placeholder="Professor Orientador" required>
-        <input type="text" name="prof_coorientador" placeholder="Co-orientador">
+        <select name="orientador_id" required>
+            <option value="">Selecione o Professor Orientador</option>
+            <?php foreach($professores as $prof): ?>
+                <option value="<?= $prof['id'] ?>"><?= htmlspecialchars($prof['nome']) ?></option>
+            <?php endforeach; ?>
+        </select>
+        <select name="convidado1_id">
+            <option value="">Selecione o Professor Co-orientador (opcional)</option>
+            <?php foreach($professores as $prof): ?>
+                <option value="<?= $prof['id'] ?>"><?= htmlspecialchars($prof['nome']) ?></option>
+            <?php endforeach; ?>
+        </select>
         <input type="text" name="cidade" placeholder="Cidade">
         <button class="btn" type="submit">Agendar</button>
     </form>

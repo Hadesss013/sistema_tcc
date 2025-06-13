@@ -1,14 +1,20 @@
 <?php
-$servername = "localhost";
-$username = "root"; // ajuste conforme seu ambiente
-$password = ""; // ajuste conforme sua senha
-$dbname = "sistema_tcc"; // ajuste conforme o nome do seu banco
- 
-// Cria a conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
- 
-// Checa a conexão
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+// conexao.php padronizado para PDO
+$host = 'localhost';
+$db   = 'sistema_tcc';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (PDOException $e) {
+    die('Erro na conexão: ' . $e->getMessage());
 }
 ?>
